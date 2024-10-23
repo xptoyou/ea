@@ -1,31 +1,14 @@
-const { app, BrowserWindow } = require('electron');
-const path = require('path');
-
-function createWindow() {
-    const win = new BrowserWindow({
-        width: 800,
-        height: 600,
-        webPreferences: {
-            preload: path.join(__dirname, 'preload.js'),
-            contextIsolation: true,
-        },
-    });
-
-    win.loadFile('index.html'); // Load your Seif application
-}
-
-app.whenReady().then(createWindow);
-
-app.on('window-all-closed', () => {
-    if (process.platform !== 'darwin') {
-        app.quit();
+// Function to execute the generated code
+document.getElementById('runCode').addEventListener('click', function() {
+    const code = Blockly.JavaScript.workspaceToCode(workspace);
+    try {
+        // Use eval to execute the generated JavaScript code
+        const output = eval(code);
+        document.getElementById('output').textContent = output || "Code executed successfully!";
+    } catch (e) {
+        document.getElementById('output').textContent = `Error: ${e.message}`;
     }
 });
 
-app.on('activate', () => {
-    if (BrowserWindow.getAllWindows().length === 0) {
-        createWindow();
-    }
-});
 
 
