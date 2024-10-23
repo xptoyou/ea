@@ -6,8 +6,8 @@ function createWindow() {
         width: 800,
         height: 600,
         webPreferences: {
-            nodeIntegration: true, // Enable Node.js integration
-            contextIsolation: false, // Disable context isolation
+            nodeIntegration: true,
+            contextIsolation: false,
         },
     });
 
@@ -27,3 +27,4 @@ app.on('activate', () => {
         createWindow();
     }
 });
+
