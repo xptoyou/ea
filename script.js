@@ -71,10 +71,9 @@ Blockly.JavaScript['seif_join'] = function(block) {
     return [code, Blockly.JavaScript.ORDER_ADDITION];
 };
 
-// Function to download the workspace as a text file
+// Function to download the workspace as a weeb
 document.getElementById('downloadCode').addEventListener('click', function() {
-    const xml = Blockly.Xml.workspaceToDom(workspace);
-    const xmlText = Blockly.Xml.domToText(html);
+    const html = Blockly.html.workspaceToDom(workspace);
     const blob = new Blob([xmlText], { type: 'text/html' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
