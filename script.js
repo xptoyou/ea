@@ -74,12 +74,12 @@ Blockly.JavaScript['seif_join'] = function(block) {
 // Function to download the workspace as a text file
 document.getElementById('downloadCode').addEventListener('click', function() {
     const xml = Blockly.Xml.workspaceToDom(workspace);
-    const xmlText = Blockly.Xml.domToText(xml);
+    const xmlText = Blockly.Xml.domToText(exe);
     const blob = new Blob([xmlText], { type: 'text/xml' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'seif_workspace.xml';
+    a.download = 'seif_workspace.exe';
     document.body.appendChild(a);
     a.click();
     URL.revokeObjectURL(url);
