@@ -7,15 +7,48 @@
 </head>
 <body>
     <h1>Email Verification</h1>
-    <a href="https://xptoyou.github.io/verify/">verify</a>
-    <label for="username">Username:</label>
-      <form action="/verify" method="POST">
-          <input type="text" id="username" name="username" required>
+
+    <!-- Link to verify page -->
+    <a href="https://xptoyou.github.io/verify/" id="verify-link">Verify</a>
+
+    <!-- Form for email and username -->
+    <form id="verificationForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
         <br><br>
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" required>
-</body>
+        <br><br>
+        <button type="submit">Save and Verify</button>
     </form>
+
+    <script>
+        document.getElementById('verificationForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevents default form submission
+
+            // Get values from form inputs
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+
+            // Save to local storage
+            localStorage.setItem('username', username);
+            localStorage.setItem('email', email);
+
+            alert('Information saved! Click on Verify to proceed.');
+        });
+
+        // Optional: Check if data is available when clicking "Verify"
+        document.getElementById('verify-link').addEventListener('click', function(event) {
+            const savedUsername = localStorage.getItem('username');
+            const savedEmail = localStorage.getItem('email');
+
+            if (!savedUsername || !savedEmail) {
+                event.preventDefault(); // Prevent link navigation if no data
+                alert('No data found. Please enter your information and save first.');
+            }
+        });
+    </script>
 </body>
 </html>
+
 
